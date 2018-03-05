@@ -2,7 +2,7 @@ require("dotenv").config();
 const ENV = process.env;
 
 var plantuml = require('node-plantuml');
-plantuml.useNailgun(); // Activate the usage of Nailgun 
+//plantuml.useNailgun(); // Activate the usage of Nailgun 
 
 const express = require('express')
 const app = express()
@@ -55,20 +55,29 @@ app.post('/text', textParser, (request, response) => {
 	var hash = crypto.createHash('md5').update(uml).digest("hex")
 	var path = `${HASH_FILE_DIR}/${hash}.png`
 	if (!fs.existsSync(path)) {
-		var wstream = fs.createWriteStream(path)
 		var gen = plantuml.generate(uml, {format: 'png'})
+
+    var wstream = fs.createWriteStream(path)
 		gen.out.pipe(wstream)
-    console.log(`${path} created.`)
+
+    wstream.on('finish', ()=>{
+      console.log(`${path} created.`)
+      response.json({
+        ok: true,
+        payload: {
+          hash: hash
+        }
+      })
+    })
 	}else{
 		console.log(`${path} already exists.`)
+    response.json({
+      ok: true,
+      payload: {
+        hash: hash
+      }
+    })
 	}
-
-	response.json({
-		ok: true,
-  	payload: {
-  		hash: hash
-  	}
-	})
 })
 
 app.get('/url', (request, response) => {

@@ -63,8 +63,6 @@ public class ImageService {
 	}
 
 	public String getActivitiPngHash(String xml) throws Exception {
-		xml = xml.substring(9); //strip @startwf\n
-		
 		MessageDigest md5 = MessageDigest.getInstance("MD5");
 		md5.update(StandardCharsets.UTF_8.encode(xml));
 		String hash = String.format("%032x", new BigInteger(1, md5.digest()));
