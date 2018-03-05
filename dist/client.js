@@ -28,4 +28,4 @@ function replaceScriptWithImage(text,node){
       }
     });
   }
-});
+}
