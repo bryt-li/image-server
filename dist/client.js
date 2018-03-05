@@ -13,7 +13,7 @@ function replaceScriptWithImage(text,node){
         node.html(img);
       }
     });
-  }eles if(text.indexOf('<?xml version="1.0" encoding="UTF-8"?>') == 0){
+  }else if(text.indexOf('<?xml version="1.0" encoding="UTF-8"?>') == 0){
     $.ajax({
       type: "POST",
       url: "https://utils.orienteexpress.com/wf/text",
