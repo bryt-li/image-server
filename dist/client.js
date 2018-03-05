@@ -1,5 +1,5 @@
 function replaceScriptWithImage(text,node){
-  if (text.indexOf("@startwf") == 0) {
+  if (text.indexOf("@startuml") == 0) {
     $.ajax({
       type: "POST",
       url: "https://utils.orienteexpress.com/uml/text",
