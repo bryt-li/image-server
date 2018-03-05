@@ -8,7 +8,7 @@ function replaceScriptWithImage(text,node){
       dataType: "json"
     }).done(function(data) {
       if (data.ok) {
-        var src = host + "/png/" + data.payload.hash;
+        var src = "https://utils.orienteexpress.com/uml/png/" + data.payload.hash;
         var img = '<img src="' + src + '"/>';
         node.html(img);
       }
@@ -22,7 +22,7 @@ function replaceScriptWithImage(text,node){
       dataType: "json"
     }).done(function(data) {
       if (data.ok) {
-        var src = host + "/png/" + data.payload.hash;
+        var src = "https://utils.orienteexpress.com/wf/png/" + data.payload.hash;
         var img = '<img src="' + src + '"/>';
         node.html(img);
       }
