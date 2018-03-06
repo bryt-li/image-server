@@ -1,4 +1,4 @@
-function replaceScriptWithImage(text,node){
+function getImageUrl(text){
   if (text.indexOf("@startuml") == 0) {
     $.ajax({
       type: "POST",
@@ -8,9 +8,7 @@ function replaceScriptWithImage(text,node){
       dataType: "json"
     }).done(function(data) {
       if (data.ok) {
-        var src = "https://utils.orienteexpress.com/uml/png/" + data.payload.hash;
-        var img = '<img src="' + src + '"/>';
-        node.html(img);
+        return "https://utils.orienteexpress.com/uml/png/" + data.payload.hash;
       }
     });
   }else if(text.indexOf('<?xml version="1.0" encoding="UTF-8"?>') == 0){
@@ -22,10 +20,9 @@ function replaceScriptWithImage(text,node){
       dataType: "json"
     }).done(function(data) {
       if (data.ok) {
-        var src = "https://utils.orienteexpress.com/wf/png/" + data.payload.hash;
-        var img = '<img src="' + src + '"/>';
-        node.html(img);
+        return "https://utils.orienteexpress.com/wf/png/" + data.payload.hash;
       }
     });
   }
+  return null;
 }
