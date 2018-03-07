@@ -35,7 +35,7 @@
 		</init-param>
 		<init-param>
 			<param-name>ignore</param-name>
-			<param-value>^(.+[.])(jsp|png|gif|jpg|js|css|jspx|jpeg|html|json)$|.+/druid.*</param-value>
+			<param-value>^(.+[.])(jsp|png|gif|jpg|css|jspx|jpeg|html|json)$|.+/druid.*</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

@@ -140,4 +140,25 @@ public class ImageService {
 		String hash = String.format("%032x", new BigInteger(1, md5.digest()));
 		return hash;
 	}
+
+	public String getClientJs() {
+		String s = String.join("\n"
+		         , "function setImageUrl(text,img){"
+		         , "  if (text.indexOf(\"@startuml\") == 0 ||"
+		         , "      text.indexOf('<?xml version=\"1.0\" encoding=\"UTF-8\"?>') == 0) {"
+		         , "    $.ajax({"
+		         , "      type: \"POST\","
+		         , "      url: \"" + HOST + "/text\","
+		        	 , "      data: text,"
+		        	 , "      crossDomain: true,"
+		        	 , "      dataType: \"json\""
+		        	 , "    }).done(function(data) {"
+		        	 , "      if (data.ok) {"
+		        	 , "        img.attr(\"src\", data.payload.url);"
+		        	 , "      }"
+		        	 , "    });"
+		        	 , "  }"
+		        	 , "}");
+		return s;
+	}
 }

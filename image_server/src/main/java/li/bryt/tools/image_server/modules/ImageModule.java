@@ -35,6 +35,12 @@ public class ImageModule extends baseModule {
 	@Inject
 	private ImageService imageService;
 
+	@At("/client")
+	@Ok("raw:js")
+	public String client() {
+		return imageService.getClientJs();
+	}
+	
 	@At("/url")
 	@Ok("raw:png")
 	public Object url(String src) {
