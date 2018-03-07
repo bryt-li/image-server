@@ -2,8 +2,7 @@
 
 ./run.sh
 
-cd plantuml-server
+cd image_server
 ./run.sh
 
-cd ../activiti_image_server
-./run.sh
+cd ..
