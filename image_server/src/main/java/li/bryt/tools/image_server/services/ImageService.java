@@ -158,7 +158,8 @@ public class ImageService {
 		        	 , "      }"
 		        	 , "    });"
 		        	 , "  }"
-		        	 , "}");
+		        	 , "}"
+		        	 , "function getImageUrl(src){return \"" + HOST + "/url?src=\" + src;}");
 		return s;
 	}
 }
