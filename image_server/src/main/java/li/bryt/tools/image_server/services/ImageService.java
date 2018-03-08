@@ -157,6 +157,9 @@ public class ImageService {
 		        	 , "        img.attr(\"src\", data.payload.url);"
 		        	 , "      }"
 		        	 , "    });"
+		        	 , "    return true;"
+		        	 , "  }else{"
+		        	 , "    return false;"
 		        	 , "  }"
 		        	 , "}"
 		        	 , "function getImageUrl(src){return \"" + HOST + "/url?src=\" + src;}");
