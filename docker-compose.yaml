@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  tomcat:
+    build: ./image_server
+    container_name: image_server_tomcat
+  nginx:
+    build: ./nginx
+    container_name: image_server_nginx
+    ports:
+      - 443:443
+    depends_on:
+      - tomcat
